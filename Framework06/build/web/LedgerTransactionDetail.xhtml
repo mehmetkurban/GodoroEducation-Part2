@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+       <h:form>
+            <input type="hidden" name="transactionId" value="#{ledgerTransactionDetailBean.transaction.transactionId}"/>
+            <h:panelGrid columns="2" style="background-color: #CCCCCC;padding: 30px;border:1px solid#0000FF;">
+                
+                <h:outputLabel value="Hareket Kim"/>
+                <h:outputText value="#{ledgerTransactionDetailBean.transaction.transactionId}"/>
+                <h:outputLabel value="Hareket Adı"/>
+                <h:inputText value="#{ledgerTransactionDetailBean.transaction.transactionName}"/>
+                <h:outputLabel value="Yerel Tutar"/>
+                <h:inputText value="#{ledgerTransactionDetailBean.transaction.amountLocal}"/>
+                <h:outputLabel value="Hesap">
+                    <h:selectOneMenu value="#{ledgerTransactionDetailBean.selectAccountId}">
+                        <f:selectItem itemValue="0" itemLabel="-Tümü-"/>
+                        <f:selectItems
+                            value="#{ledgerApplicationBean.accountList}"
+                            var="account"
+                            itemValue="#{account.accountId}"
+                            itemLabel="#{account.accountName}"
+                        />
+                    </h:selectOneMenu>
+                </h:outputLabel>
+                <h:commandButton value="Sakla" action="#{ledgerTransactionDetailBean.save()}"/>
+            </h:panelGrid>
+        </h:form>
+    </h:body>
+</html>
+
