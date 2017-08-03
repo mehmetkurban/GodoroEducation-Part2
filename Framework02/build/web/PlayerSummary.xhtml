@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+        <h:dataTable value="#{playerSummaryBean.playerList}" var="player"
+                     style="background-color: #CCCCCC;padding: 30px;border:1px solid#0000FF;"
+        >
+            <h:column>
+                <h:outputText value="#{player.playerId}"/>
+            </h:column>
+            
+            <h:column>
+                <h:outputText value="#{player.playerName}"/>
+            </h:column>
+            
+            <h:column>
+                <h:outputText value="#{player.averageScore}"/>
+            </h:column>
+            
+            <h:column>
+                <h:commandLink value="Sil" action="#{playerSummaryBean.delete()}">
+                    <h:outputLink value="PlayerDetail.xhtml">
+                        Güncelle
+                    <f:param name="playerId" value="#{player.playerId}"/>     
+                    </h:outputLink>                                   
+                </h:commandLink>
+            </h:column>
+            
+        </h:dataTable>
+            <h:outputLink value="PlayerDetail.xhtml">
+                Ekle
+            </h:outputLink>
+            
+        </h:form>
+    </h:body>
+</html>
+
